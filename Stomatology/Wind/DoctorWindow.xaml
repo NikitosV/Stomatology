@@ -1,0 +1,139 @@
+﻿<Window x:Class="Stomatology.Wind.DoctorWindow"
+ TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Stomatology.Wind"
+        mc:Ignorable="d"
+        Title="Login" Height="690" Width="760" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Icon="/Stomatology;component/Resources/icon.png">
+
+    <Grid Background="White">
+        <Grid Background="#f6f6f6">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Статусбар-->
+            <Grid Grid.ColumnSpan="2" Background="#FF2D7BA8" MouseLeftButtonDown="DragAdminWin_MouseLeftButtonDown" >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock x:Name="Name"  Width="615" Height="auto" Foreground="#DDFFFFFF" FontSize="22" VerticalAlignment="Center" Margin="0,4,0,5"/>
+
+                    <materialDesign:PopupBox PlacementMode="BottomAndAlignLeftEdges" StaysOpen="False"  Foreground="White">
+                        <StackPanel>
+                            <Button Content="Помощь" Click="HelpBut_Click" />
+                            <Button Content="О нас" Click="AboutBtn_Click" />
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+
+                    <Button Height="30" Width="30" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Margin="0,0,3,0" Background="#FF2D7BA8" BorderBrush="#FF2D7BA8" Foreground="White" Click="MinimizedWin_CLick" >
+                        <materialDesign:PackIcon Kind="WindowMinimize"></materialDesign:PackIcon>
+                    </Button>
+
+                    <Button Height="30" Width="30" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Margin="0,0,3,0" Click="ChangeAcc_Click" Background="#FF2D7BA8" BorderBrush="#FF2D7BA8"  Foreground="White">
+                        <materialDesign:PackIcon Kind="AccountSwitch"></materialDesign:PackIcon>
+                    </Button>
+
+                    <Button Height="30" Width="30" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Margin="0,0,3,0" Click="AdminClose_Click" Background="#FF2D7BA8" BorderBrush="#FF2D7BA8"  Foreground="White" >
+                        <materialDesign:PackIcon Kind="WindowClose"></materialDesign:PackIcon>
+                    </Button>
+                </StackPanel>
+            </Grid>
+
+            <!--выбор-->
+            <Grid Grid.Column="0" Grid.Row="1" Background="#FFE8E8E8">
+                <materialDesign:PackIcon Kind="MedicalBag" Width="256" Height="167" Foreground="#FF28688D" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0, 50" />
+                <TextBlock Text="Расписание приема врачей."  Width="256" Foreground="#FF5D5D5D"  FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Center"  Margin="28,259,20,0"  FontFamily="Museo Sans Cyrl 300" TextWrapping="Wrap" TextAlignment="Left" RenderTransformOrigin="0.758,0.437"/>
+                <DatePicker x:Name="Date" Margin="20,317,20,293" FontSize="28"/>
+                <TextBlock Text="Выберите доктора."  Width="230" Foreground="#FF5D5D5D"  FontSize="22" VerticalAlignment="Top" HorizontalAlignment="Center"  Margin="28,439,46,0"  FontFamily="Museo Sans Cyrl 300" TextWrapping="Wrap" TextAlignment="Left"/>
+                <ComboBox x:Name="Doctor" Margin="20,478,20,127" FontSize="24"  DisplayMemberPath="FIO" Height="50" RenderTransformOrigin="0.5,0.5" >
+
+                </ComboBox>
+                <Button x:Name="Bt" Content="Далее" Margin="0,570,0,33" Height="Auto" FontSize="24" Click="Bt_Click" Foreground="White" Background="#FF28688D" BorderBrush="{x:Null}"  />
+
+            </Grid>
+            <!--Здесь нужно добавить тело к событиям кслика, я их уже написала-->
+            <Grid Grid.Column="1" Grid.Row="1">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal" >
+                            <Label Content="10:00" FontSize="24"  VerticalAlignment="Center"  HorizontalAlignment="Left" Width="70"/>
+                            <TextBlock x:Name="Time10" Width="330" Height="50" Background="#FFC9C9C9" FontSize="16"  Foreground="White" TextWrapping="Wrap"/>
+
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal" >
+                            <Label Content="11:00" FontSize="24"  VerticalAlignment="Center"  HorizontalAlignment="Left" Width="70"/>
+                            <TextBlock x:Name="Time11" Width="330" Height="50" Background="#FFC9C9C9" FontSize="16"  Foreground="White" TextWrapping="Wrap"/>
+
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="12:00" FontSize="24"  VerticalAlignment="Center"  HorizontalAlignment="Left" Width="70"/>
+                            <TextBlock x:Name="Time12"  Width="330" Height="50" Background="#FFC9C9C9" FontSize="16"  Foreground="White" TextWrapping="Wrap"/>
+
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="13:00" FontSize="24"  VerticalAlignment="Center"  HorizontalAlignment="Left" Width="70"/>
+                            <TextBlock x:Name="Time13"  Width="330" Height="50" Background="#FFC9C9C9" FontSize="16"  Foreground="White" TextWrapping="Wrap"/>
+
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="14:00" FontSize="24"  VerticalAlignment="Center"  HorizontalAlignment="Left" Width="70"/>
+                            <TextBlock x:Name="Time14" Width="330" Height="50" Background="#FFC9C9C9" FontSize="16"  Foreground="White" TextWrapping="Wrap"/>
+
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal" >
+                            <Label Content="15:00" FontSize="24"  VerticalAlignment="Center"  HorizontalAlignment="Left" Width="70"/>
+                            <TextBlock x:Name="Time15" Width="330" Height="50" Background="#FFC9C9C9" FontSize="16"  Foreground="White" TextWrapping="Wrap"/>
+
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal" >
+                            <Label Content="16:00" FontSize="24"  VerticalAlignment="Center"  HorizontalAlignment="Left" Width="70" />
+                            <TextBlock x:Name="Time16" Width="330" Height="50" Background="#FFC9C9C9" FontSize="16"  Foreground="White" TextWrapping="Wrap"/>
+
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal" >
+                            <Label Content="17:00" FontSize="24"  VerticalAlignment="Center"  HorizontalAlignment="Left" Width="70"/>
+                            <TextBlock x:Name="Time17"  Width="330" Height="50" Background="#FFC9C9C9" FontSize="16"  Foreground="White" TextWrapping="Wrap"/>
+
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="18:00" FontSize="24"  VerticalAlignment="Center" HorizontalAlignment="Left" Width="70"/>
+                            <TextBlock   x:Name="Time18"  Width="330" Height="50" Background="#FFC9C9C9" FontSize="16"  Foreground="White" TextWrapping="Wrap"/>
+
+                        </StackPanel>
+                    </ListViewItem>
+
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
